@@ -1,0 +1,1 @@
+// Stores every variable's name, type, and value.

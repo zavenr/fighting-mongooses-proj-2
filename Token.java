@@ -1,0 +1,1 @@
+// Defines what a token is and all the token types.

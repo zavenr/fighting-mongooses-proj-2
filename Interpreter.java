@@ -1,0 +1,1 @@
+// Runs the program and prints the output.

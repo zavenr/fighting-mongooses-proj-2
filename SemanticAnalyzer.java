@@ -1,0 +1,1 @@
+// Checks the program follows MiniLang's rules before it runs.

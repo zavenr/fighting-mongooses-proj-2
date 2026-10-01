@@ -1,0 +1,1 @@
+// Checks the tokens follow the grammar and builds the AST.
