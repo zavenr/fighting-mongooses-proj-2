@@ -1,4 +1,6 @@
 // Defines what a token is and all the token types.
+
+// This is a fixed set, if theres a typo it wont compile
 enum TokenType{
     INT, REAL, PRINT,
     IDENTIFIER, INTEGER_LITERAL, REAL_LITERAL,
@@ -16,6 +18,15 @@ public class Token{
         this.type = type;
         this.text = text;
         this.line = line;
+    }
+
+
+    public String toString(){
+        if(type == TokenType.IDENTIFIER || type == TokenType.INTEGER_LITERAL || 
+        type == TokenType.REAL_LITERAL){
+            return type + "(" + text + ")";
+        }
+        return type.toString();
     }
 
 }
