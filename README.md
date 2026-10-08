@@ -1,21 +1,4 @@
-﻿# Fighting Mongooses — Project 2
-
-CS 3210 — MiniLang Programming Language Interpreter
-
-## Build and run
-
-Run these commands from the repository root with a Java Development Kit (JDK) installed:
-
-```sh
-javac -d out main/*.java
-java -cp out Main
-```
-
-The Java source files are in `main/`, and compiled classes go into `out/`, which Git ignores. These commands have been verified with JDK 21.
-
-**Current implementation:** `Main` prints `Hello, World!`. Reading a `.mini` source file and providing a debug/display mode are assignment requirements still to be implemented. Update the run instructions when those features are available.
-
-## Assignment specification
+﻿# Fighting Mongooses — Project 2S
 
 ### 1. Project Overview
 
@@ -86,11 +69,11 @@ Keywords are reserved and cannot be used as identifiers.
 
 An identifier must begin with a letter. After the first character, it may contain letters, digits, and underscores. Identifiers are case-sensitive.
 
-| Valid | Invalid |
-| --- | --- |
-| `x` | `2value` |
-| `total_score` | `$total` |
-| `student1` | `real` (reserved keyword) |
+| Valid          | Invalid                    |
+| -------------- | -------------------------- |
+| `x`            | `2value`                   |
+| `total_score`  | `$total`                   |
+| `student1`     | `real` (reserved keyword)  |
 | `temperature2` | `print` (reserved keyword) |
 
 #### 4.3 Numeric Literals
@@ -100,16 +83,16 @@ An identifier must begin with a letter. After the first character, it may contai
 
 #### 4.4 Operators and Delimiters
 
-| Symbol | Token / Role | Meaning |
-| --- | --- | --- |
-| `+` | `PLUS` | addition |
-| `-` | `MINUS` | subtraction |
-| `*` | `MULTIPLY` | multiplication |
-| `/` | `DIVIDE` | division |
-| `=` | `ASSIGN` | assignment |
-| `(` | `LEFT_PAREN` | left parenthesis |
-| `)` | `RIGHT_PAREN` | right parenthesis |
-| `;` | `SEMICOLON` | statement terminator |
+| Symbol | Token / Role  | Meaning              |
+| ------ | ------------- | -------------------- |
+| `+`    | `PLUS`        | addition             |
+| `-`    | `MINUS`       | subtraction          |
+| `*`    | `MULTIPLY`    | multiplication       |
+| `/`    | `DIVIDE`      | division             |
+| `=`    | `ASSIGN`      | assignment           |
+| `(`    | `LEFT_PAREN`  | left parenthesis     |
+| `)`    | `RIGHT_PAREN` | right parenthesis    |
+| `;`    | `SEMICOLON`   | statement terminator |
 
 Spaces, tabs, and new lines separate tokens but otherwise do not affect program meaning. Your lexer should track line numbers so later stages can report useful errors.
 
@@ -227,12 +210,12 @@ Your project must provide a way to display the AST or parse tree for demonstrati
 
 Maintain a symbol table for declared variables. The semantic analyzer and interpreter will use this table to track information about identifiers.
 
-| Field | Required Information |
-| --- | --- |
-| Name | Identifier name |
-| Type | `int` or `real` |
-| Initialized | Whether a value has been assigned |
-| Value | Current runtime value, when available |
+| Field       | Required Information                  |
+| ----------- | ------------------------------------- |
+| Name        | Identifier name                       |
+| Type        | `int` or `real`                       |
+| Initialized | Whether a value has been assigned     |
+| Value       | Current runtime value, when available |
 
 The final symbol table must be displayable in debug/display mode.
 
@@ -292,13 +275,13 @@ Execute programs that successfully pass lexical, syntax, and semantic analysis. 
 
 Your interpreter must distinguish the major error categories below. Error wording does not need to match these examples exactly, but messages must be specific enough to help a programmer locate and understand the problem.
 
-| Category | Example |
-| --- | --- |
-| Lexical | `Lexical Error on line 1: Unknown character '@'` |
-| Syntax | `Syntax Error on line 2: Expected ';' after assignment.` |
-| Semantic | `Semantic Error on line 3: Variable 'x' is not declared.` |
+| Category | Example                                                                       |
+| -------- | ----------------------------------------------------------------------------- |
+| Lexical  | `Lexical Error on line 1: Unknown character '@'`                              |
+| Syntax   | `Syntax Error on line 2: Expected ';' after assignment.`                      |
+| Semantic | `Semantic Error on line 3: Variable 'x' is not declared.`                     |
 | Semantic | `Semantic Error on line 4: Cannot assign real value to int variable 'count'.` |
-| Runtime | `Runtime Error on line 5: Division by zero.` |
+| Runtime  | `Runtime Error on line 5: Division by zero.`                                  |
 
 Do not use raw stack traces or unhandled exceptions as the normal user-facing error report.
 
@@ -383,13 +366,13 @@ For each test, include the expected result (program output or expected error cat
 
 Your team must use Git and GitHub throughout development. All students must make meaningful contributions and meaningful commits. Do not wait until the project is complete and upload everything in a single commit.
 
-| Good Commit Messages | Avoid |
-| --- | --- |
-| Implement tokenizer for arithmetic operators | update |
-| Add parsing for variable declarations | stuff |
-| Implement symbol table | fix |
-| Add type checking for assignments | final |
-| Fix multiplication precedence bug | project |
+| Good Commit Messages                         | Avoid   |
+| -------------------------------------------- | ------- |
+| Implement tokenizer for arithmetic operators | update  |
+| Add parsing for variable declarations        | stuff   |
+| Implement symbol table                       | fix     |
+| Add type checking for assignments            | final   |
+| Fix multiplication precedence bug            | project |
 
 Commit history should show incremental development across the major project components. Both team members should be able to explain the code and design during demonstration or evaluation.
 
