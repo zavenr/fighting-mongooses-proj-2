@@ -20,7 +20,7 @@ public class Tokenizer {
             lineNum = i + 1;
             tokenizeLine(lines[i], lineNum);
         }
-        tokens.add(new Token(TokenType.END, "", lines.length));
+        tokens.add(new Token(TokenType.EOF, "", lines.length));
         return tokens;
     }
 
