@@ -20,7 +20,10 @@ public class Token{
         this.line = line;
     }
 
-
+    
+    // This is what shows up when we print a token in debug mode.
+    // Names and numbers show their text too, like IDENTIFIER(x) or INTEGER_LITERAL(10),
+    // which matches the format in the project spec. Everything else just shows its type.
     public String toString(){
         if(type == TokenType.IDENTIFIER || type == TokenType.INTEGER_LITERAL || 
         type == TokenType.REAL_LITERAL){
