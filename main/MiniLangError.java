@@ -7,7 +7,7 @@ public class MiniLangError extends RuntimeException{
     private String info;
 
     public MiniLangError(String category, int line, String info){
-        this.category = category;
+        this.category = category; 
         this.line = line;
         this.info = info;
     }

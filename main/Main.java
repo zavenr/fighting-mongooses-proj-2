@@ -6,6 +6,7 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        // Ask which .mini file to run.
         Scanner keyboard = new Scanner(System.in);
         System.out.print("Enter the .mini file name: ");
         String fileName = keyboard.nextLine();
