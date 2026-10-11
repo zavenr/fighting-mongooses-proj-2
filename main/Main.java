@@ -27,11 +27,13 @@ public class Main {
             Tokenizer tokenizer = new Tokenizer(sourceCode);
             ArrayList<Token> tokens = tokenizer.tokenize();
 
-            System.out.println("TOKENS");
-            System.out.println("------");
-            for (int i = 0; i < tokens.size(); i++) {
-                System.out.println(tokens.get(i));
-            }
+            // System.out.println("TOKENS");
+            // System.out.println("------");
+            /*
+             * for (int i = 0; i < tokens.size(); i++) {
+             * System.out.println(tokens.get(i));
+             * }
+             */
 
             // Add your sections right here: Parser, SemanticAnalyzer, Interpreter
             Parser parser = new Parser(tokens);
@@ -40,10 +42,19 @@ public class Main {
             SemanticAnalyzer analyzer = new SemanticAnalyzer();
             analyzer.analyze(program);
 
-            System.out.println("Semantic checks passed.");
+            Interpreter interpreter = new Interpreter();
+
+            interpreter.execute(program);
+
+            // System.out.println("SYMBOL TABLE");
+            // interpreter.getSymbols().print();
+
+            // System.out.println("Semantic checks passed.");
 
         } catch (MiniLangError e) {
             System.out.println(e.getErrorReport());
+        } catch (MiniLangException e) {
+            System.out.println(e.getMessage());
         }
     }
 }

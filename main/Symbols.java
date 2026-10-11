@@ -52,7 +52,7 @@ public class Symbols {
             if (!s.initialized) {
                 valueText = "(no value)";
             } else if (s.type == TokenType.INT) {
-                valueText = "" + (int) s.value.longValue(); // show 10, not 10.0
+                valueText = "" + s.value.longValue(); // show 10, not 10.0
             } else {
                 valueText = "" + s.value;
             }
