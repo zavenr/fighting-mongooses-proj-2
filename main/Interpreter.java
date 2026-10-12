@@ -28,7 +28,14 @@ public class Interpreter {
 
             } else if (statement instanceof AST.PrintStatement) {
                 AST.PrintStatement print = (AST.PrintStatement) statement;
-                System.out.println(evaluate(print.expression));
+                Number result = evaluate(print.expression);
+
+                // Whole-number reals print without ".0" so the spec's example prints 20, not 20.0.
+                if (result instanceof Double && result.doubleValue() == Math.floor(result.doubleValue())) {
+                    System.out.println(result.longValue());
+                } else {
+                    System.out.println(result);
+                }
 
             } else {
                 throw new IllegalStateException("Unknown statement node.");
@@ -122,9 +129,8 @@ public class Interpreter {
         return symbol;
     }
 
-    private MiniLangException error(int line, String message) {
-        return new MiniLangException(
-                MiniLangException.Category.RUNTIME, line, message);
+    private MiniLangError error(int line, String message) {
+        return new MiniLangError("Runtime", line, message);
     }
 
     public Symbols getSymbols() {

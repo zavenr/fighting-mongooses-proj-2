@@ -12,7 +12,7 @@
 //   <term>            -> <factor> { ("*" | "/") <factor> }  parseTerm()
 //   <factor>          -> identifier | integer | real | "(" <expression> ")"   parseFactor()
 //
-// The parser stops at the first syntax error (it throws a MiniLangException).
+// The parser stops at the first syntax error (it throws a MiniLangError).
 
 import java.util.ArrayList;
 import java.util.List;
@@ -126,7 +126,7 @@ public class Parser {
                 try {
                     return new AST.IntegerLiteral(Long.parseLong(token.text), token.line);
                 } catch (NumberFormatException e) {
-                    throw new MiniLangException(MiniLangException.Category.SYNTAX, token.line,
+                    throw new MiniLangError("Syntax", token.line,
                             "Integer literal '" + token.text + "' is too large.");
                 }
 
@@ -134,7 +134,7 @@ public class Parser {
                 advance();
                 double value = Double.parseDouble(token.text);
                 if (Double.isInfinite(value)) {
-                    throw new MiniLangException(MiniLangException.Category.SYNTAX, token.line,
+                    throw new MiniLangError("Syntax", token.line,
                             "Real literal '" + token.text + "' is too large.");
                 }
                 return new AST.RealLiteral(value, token.line);
@@ -181,12 +181,12 @@ public class Parser {
         if (check(type)) {
             return advance();
         }
-        throw new MiniLangException(MiniLangException.Category.SYNTAX, previous().line, message);
+        throw new MiniLangError("Syntax", previous().line, message);
     }
 
     // For "this token should not be here" errors: report the line of the offending token.
-    private MiniLangException errorAtCurrent(String message) {
-        return new MiniLangException(MiniLangException.Category.SYNTAX, peek().line, message);
+    private MiniLangError errorAtCurrent(String message) {
+        return new MiniLangError("Syntax", peek().line, message);
     }
 
     private static String describe(Token token) {

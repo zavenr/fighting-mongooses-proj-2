@@ -101,8 +101,7 @@ public class SemanticAnalyzer {
         return symbol;
     }
 
-    private MiniLangException error(int line, String message) {
-        return new MiniLangException(
-                MiniLangException.Category.SEMANTIC, line, message);
+    private MiniLangError error(int line, String message) {
+        return new MiniLangError("Semantic", line, message);
     }
 }
