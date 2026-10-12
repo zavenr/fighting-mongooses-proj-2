@@ -80,7 +80,7 @@ public class Tokenizer {
                 tokens.add(new Token(TokenType.SEMICOLON, ";", line));
                 break;
             default:
-                throw new MiniLangError("Lexical", line, "Unexpected character: " + c + "'");
+                throw new MiniLangError("Lexical", line, "Unknown character '" + c + "'");
         }
     }
     
